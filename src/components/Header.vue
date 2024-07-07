@@ -36,8 +36,11 @@ const paginaInicio = computed(() => route.name === 'inicio')
                 </div>
                 <div class="space-y-4">
                     <label class="block text-white uppercase font-extrabold text-lg" for="categoria">Categoría</label>
-                    <select type="text" id="categoria" class="p-3 w-full rounded-lg focus:outline-none">
+                    <select id="categoria" class="p-3 w-full rounded-lg focus:outline-none">
                         <option value="">-- Seleccione --</option>
+                        <option v-for="categoria in store.categorias" :value="categoria.strCategory">
+                            {{ categoria.strCategory }}
+                        </option>
                     </select>
                 </div>
                 <input type="submit" value="Buscar Recetas"
