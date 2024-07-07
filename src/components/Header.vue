@@ -5,6 +5,10 @@ import { useBebidasStore } from '../stores/bebidas';
 const route = useRoute();
 const store = useBebidasStore()
 const paginaInicio = computed(() => route.name === 'inicio')
+
+const handleSubmit = () => {
+    store.obtenerRecetas()
+}
 </script>
 <template>
     <header class="bg-slate-800" :class="{ header: paginaInicio }">
@@ -26,8 +30,8 @@ const paginaInicio = computed(() => route.name === 'inicio')
                     </RouterLink>
                 </nav>
             </div>
-            <form v-if="paginaInicio" class="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6"
-                action="">
+            <form @submit.prevent="handleSubmit" v-if="paginaInicio"
+                class="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6" action="">
                 <div class="space-y-4">
                     <label class="block text-white uppercase font-extrabold text-lg" for="ingrediente">Nombre o
                         Ingredientes</label>
