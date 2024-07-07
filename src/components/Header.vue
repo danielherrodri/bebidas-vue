@@ -31,12 +31,14 @@ const paginaInicio = computed(() => route.name === 'inicio')
                 <div class="space-y-4">
                     <label class="block text-white uppercase font-extrabold text-lg" for="ingrediente">Nombre o
                         Ingredientes</label>
-                    <input type="text" id="ingrediente" class="p-3 w-full rounded-lg focus:outline-none"
+                    <input type="text" id="ingrediente" v-model="store.busqueda.nombre"
+                        class="p-3 w-full rounded-lg focus:outline-none"
                         placeholder="Nombre o ingrediente: ej. Vodka, Tequila, etc">
                 </div>
                 <div class="space-y-4">
                     <label class="block text-white uppercase font-extrabold text-lg" for="categoria">Categoría</label>
-                    <select id="categoria" class="p-3 w-full rounded-lg focus:outline-none">
+                    <select id="categoria" class="p-3 w-full rounded-lg focus:outline-none"
+                        v-model="store.busqueda.categoria">
                         <option value="">-- Seleccione --</option>
                         <option v-for="categoria in store.categorias" :value="categoria.strCategory">
                             {{ categoria.strCategory }}
