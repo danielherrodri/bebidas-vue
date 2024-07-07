@@ -1,7 +1,9 @@
 <script setup>
 import { computed } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
+import { useBebidasStore } from '../stores/bebidas';
 const route = useRoute();
+const store = useBebidasStore()
 const paginaInicio = computed(() => route.name === 'inicio')
 </script>
 <template>
