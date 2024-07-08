@@ -5,6 +5,25 @@ import { useBebidasStore } from '../stores/bebidas';
 
 const modal = useModalStore()
 const bebidas = useBebidasStore()
+
+const formatearIngredientes = () => {
+
+    const ingredientesDiv = document.createElement('DIV');
+    for (let i = 1; i <= 15; i++) {
+        if (bebidas.receta[`strIngredient${i}`]) {
+            const ingrediente = bebidas.receta[`strIngredient${i}`];
+            const cantidad = bebidas.receta[`strMeasure${i}`];
+
+            const ingredienteCantidad = document.createElement('P')
+            ingredienteCantidad.classList.add('text-lg', 'text-gray-500')
+            ingredienteCantidad.textContent = `${ingrediente} - ${cantidad}`;
+
+            ingredientesDiv.appendChild(ingredienteCantidad)
+        }
+
+    }
+    return ingredientesDiv;
+}
 </script>
 
 <template>
@@ -28,9 +47,19 @@ const bebidas = useBebidasStore()
                                     <DialogTitle as="h3" class="text-gray-900 text-4xl font-extrabold my-5">
                                         {{ bebidas.receta.strDrink }}
                                     </DialogTitle>
-                                    <img :src="bebidas.receta.strDrinkThumb"
+
+                                    <img class="mx-auto w-96" :src="bebidas.receta.strDrinkThumb"
                                         :alt="'Imagen de ' + bebidas.receta.strDrink" />
 
+                                    <DialogTitle as="h3" class="text-gray-900 text-4xl font-extrabold my-5">
+                                        Ingredientes y Cantidades
+                                    </DialogTitle>
+                                    <div v-html="formatearIngredientes().outerHTML"></div>
+
+                                    <DialogTitle as="h3" class="text-gray-900 text-4xl font-extrabold my-5">
+                                        Insrucciones
+                                    </DialogTitle>
+                                    <p class="text-lg text-gray-500">{{ bebidas.receta.strInstructions }}</p>
                                 </div>
                             </div>
                             <div class="mt-5 sm:mt-6 flex justify-between gap-4">
