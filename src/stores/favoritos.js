@@ -35,6 +35,7 @@ export const useFavoritosStore = defineStore('favoritos', () => {
 
     return {
         favoritos,
+        existeFavorito,
         handleClickFavorito
     }
 })

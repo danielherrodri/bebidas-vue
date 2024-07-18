@@ -69,8 +69,9 @@ const formatearIngredientes = () => {
                                     class="w-full rounded bg-gray-600 p-3 font-bold uppercase text-white shadow hover:bg-gray-500"
                                     @click="modal.handleClickModal()">Cerrar</button>
                                 <button type="button" @click="favoritos.handleClickFavorito"
-                                    class="w-full rounded bg-orange-600 p-3 font-bold uppercase text-white shadow hover:bg-gray-500">Agregar
-                                    a favoritos</button>
+                                    class="w-full rounded bg-orange-600 p-3 font-bold uppercase text-white shadow hover:bg-gray-500">
+                                    {{ modal.textoBoton }}
+                                </button>
                             </div>
                         </DialogPanel>
                     </TransitionChild>
